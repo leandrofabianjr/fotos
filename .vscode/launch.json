@@ -10,7 +10,7 @@
       "name": "Launch Program",
       "skipFiles": ["<node_internals>/**"],
       "runtimeExecutable": "nodemon",
-      "program": "${workspaceFolder}\\app\\index.js",
+      "program": "${workspaceFolder}\\app\\app.js",
       "envFile": "${workspaceFolder}/.env"
     }
   ]
