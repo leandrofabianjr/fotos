@@ -20,11 +20,13 @@ class Fotos {
   id;
   /** @type {number} */
   tamanho;
+  /** @type {string} */
+  url;
 
   constructor(json, index) {
     this.id = json.id;
     this.tamanho = json.size;
-    this.index = index;
+    this.url = `https://drive.usercontent.google.com/download?id=${this.id}`;
   }
 
   /**
@@ -32,9 +34,8 @@ class Fotos {
    */
   toJson() {
     return {
-      index: this.index,
       tamanho: this.tamanho,
-      url: `https://drive.google.com/uc?export=view&id=${this.id}`,
+      url: this.url,
     };
   }
 }
@@ -43,7 +44,7 @@ class Fotos {
  * @param {number} maximo
  * @returns {Promise<{fotos: Fotos[], total: number}>}
  */
-export function buscarFotos(offset, maximo) {
+export function buscarFotos(offset = 0, maximo = 10) {
   return new Promise((resolve, reject) => {
     drive.files.list(
       {
