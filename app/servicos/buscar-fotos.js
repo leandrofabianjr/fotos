@@ -2,11 +2,15 @@ import * as google from "googleapis";
 
 const folderId = process.env.FOTOS_PASTA_GOOGLE_ID ?? "";
 
+const base64EncodedServiceAccount = process.env.GOOGLE_CREDENTIALS_BASE64;
+const decodedServiceAccount = Buffer.from(
+  base64EncodedServiceAccount,
+  "base64"
+).toString("utf-8");
+const credentials = JSON.parse(decodedServiceAccount);
+
 const auth = new google.Auth.GoogleAuth({
-  credentials: {
-    private_key: process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/gm, "\n"),
-    client_email: process.env.GOOGLE_CLIENT_EMAIL,
-  },
+  credentials,
   scopes: ["https://www.googleapis.com/auth/drive.metadata.readonly"],
 });
 const drive = new google.drive_v3.Drive({ version: "v3", auth });
