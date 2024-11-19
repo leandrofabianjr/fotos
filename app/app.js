@@ -8,7 +8,9 @@ const app = express();
 const port = process.env.PORT ?? 3000;
 
 app.set('view engine', 'hbs');
-app.set('views', 'app/templates');
+// __dirname can't be found so
+const dirname = path.dirname(new URL(import.meta.url).pathname);
+app.set('views', path.join(dirname, 'views')); 
 
 app.get('/', async (req, res) => {
   const { fotos, total } = await buscarFotos(0, 12);
