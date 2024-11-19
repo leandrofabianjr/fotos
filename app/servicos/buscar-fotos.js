@@ -22,11 +22,14 @@ class Fotos {
   tamanho;
   /** @type {string} */
   url;
+  /** @type {string} */
+  name;
 
   constructor(json, index) {
     this.id = json.id;
     this.tamanho = json.size;
     this.url = `https://drive.google.com/thumbnail?id=${this.id}&sz=w1000`;
+    this.name = json.name;
   }
 
   /**
@@ -49,7 +52,7 @@ export function buscarFotos(offset = 0, maximo = 10) {
     drive.files.list(
       {
         q: `'${folderId}' in parents and trashed = false`,
-        fields: "nextPageToken, files(id, size)",
+        fields: "nextPageToken, files(id, size, name)",
       },
       (err, result) => {
         if (err) {

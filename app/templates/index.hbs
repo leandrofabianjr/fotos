@@ -1,97 +1,58 @@
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photo Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-  </head>
-  <body class="bg-gray-100 text-gray-900 font-sans">
-    <!-- Hero Section -->
-    <section
-      class="relative bg-cover bg-center h-screen"
-      style="background-image: url('https://media.istockphoto.com/id/1341341634/photo/cute-baby-chimpanzee-portrait.jpg?s=612x612&w=0&k=20&c=UK7b8hsMQL30ma_6XEL7MN6khgUyDXKRxTpkY_JaSek=')"
-    >
-      <div class="absolute inset-0 bg-black opacity-50"></div>
-      <div
-        class="relative z-10 flex justify-center items-center h-full text-center text-white"
-      >
-        <h1 class="text-5xl font-bold mb-2">Fotos</h1>
-        <p class="text-xl ml-2">
-          de Leandro Fabian Jr.
-        </p>
-      </div>
-    </section>
 
-    <!-- Portfolio Gallery -->
-    <section class="py-16 px-4">
-      <h2 class="text-4xl font-semibold text-center mb-12">Fotos</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {{!-- Loop through photos --}}
-        {{#each fotos}}
-        <div class="group overflow-hidden rounded-lg shadow-lg">
-          <img
-            src="{{this.url}}"
-            alt="{{this.url}}"
-            class="w-full h-64 object-cover transform group-hover:scale-110 transition-all duration-300"
-          />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fotos de Leandro Fabian Jr.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <section class="relative bg-cover bg-center h-screen" style="background-image: url('{{hero.url}}')">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 flex justify-center items-center h-full text-center text-white">
+      <h1 class="text-5xl font-bold mb-2">Fotos</h1>
+      <p class="text-xl ml-2">
+        de Leandro Fabian Jr.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 px-4">
+    <div class="container mx-auto text-center">
+      <p class="text-lg mb-8">
+        Às vezes faço umas fotos em viagens e passeios.<br />Instagram dá trabalho e é muito limitado, então coloco as
+        fotos
+        aqui.
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-auto">
+        {{#each colunas}}
+        <div class="grid gap-4">
+          {{#each this}}
+          <div>
+            <img class="h-auto max-w-full rounded-lg" src="{{this.url}}" alt="{{this.url}}" />
+          </div>
+          {{/each}}
         </div>
         {{/each}}
-        </div>
       </div>
-    </section>
+    </div>
 
-    <!-- About Me Section -->
-    <section class="py-16 bg-gray-800 text-white">
-      <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-semibold mb-6">About Me</h2>
-        <p class="text-lg mb-8">
-          Hi, I'm [Your Name], a passionate photographer with a love for
-          capturing moments that tell stories. From nature to portraits, my goal
-          is to make every shot unique and memorable.
-        </p>
-        <a
-          href="#contact"
-          class="px-6 py-3 bg-yellow-500 text-gray-900 rounded-full text-xl hover:bg-yellow-400 transition duration-300"
-        >Contact Me</a>
-      </div>
-    </section>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16 px-4 bg-gray-100">
-      <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-semibold text-gray-900 mb-6">Get in Touch</h2>
-        <p class="text-lg mb-8">
-          Have a project or inquiry? I'd love to hear from you!
-        </p>
-        <a
-          href="mailto:your-email@example.com"
-          class="px-6 py-3 bg-blue-600 text-white rounded-full text-xl hover:bg-blue-500 transition duration-300"
-        >Email Me</a>
+  <footer class="bg-gray-800 text-white py-8">
+    <div class="container mx-auto text-center">
+      <div class="mb-4">
+        <a href="https://instagram.com/leandrofabianjr" target="_blank"
+          class="mx-4 text-xl hover:text-yellow-500 transition duration-300">Instagram</a>
+        <a href="https://leandrofabianjr.com" target="_blank"
+          class="mx-4 text-xl hover:text-yellow-500 transition duration-300">Website</a>
       </div>
-    </section>
+      <p>&copy; 2024 Leandro Fabian Jr. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-      <div class="container mx-auto text-center">
-        <div class="mb-4">
-          <a
-            href="https://instagram.com/yourprofile"
-            target="_blank"
-            class="mx-4 text-xl hover:text-yellow-500 transition duration-300"
-          >Instagram</a>
-          <a
-            href="https://www.flickr.com/yourprofile"
-            target="_blank"
-            class="mx-4 text-xl hover:text-yellow-500 transition duration-300"
-          >Flickr</a>
-          <a
-            href="https://yourwebsite.com"
-            target="_blank"
-            class="mx-4 text-xl hover:text-yellow-500 transition duration-300"
-          >Website</a>
-        </div>
-        <p>&copy; 2024 [Your Name]. All Rights Reserved.</p>
-      </div>
-    </footer>
-  </body>
 </html>
