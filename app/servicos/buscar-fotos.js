@@ -26,7 +26,7 @@ class Fotos {
   constructor(json, index) {
     this.id = json.id;
     this.tamanho = json.size;
-    this.url = `https://drive.usercontent.google.com/download?id=${this.id}`;
+    this.url = `https://drive.google.com/thumbnail?id=${this.id}&sz=w1000`;
   }
 
   /**
