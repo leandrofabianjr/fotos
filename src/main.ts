@@ -12,11 +12,24 @@ async function bootstrap() {
     exphbs.create({
       extname: '.hbs',
       defaultLayout: 'main',
+      helpers: {
+        json: function json(object: any) {
+          return JSON.stringify(object, null, 2);
+        },
+        pathFromArray: function pathFromArray(array: string[], index: number) {
+          return array.slice(0, index).join('/');
+        },
+      },
     }).engine,
   );
   app.setViewEngine('hbs');
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  //serve bootstrap
+  app.useStaticAssets(
+    join(__dirname, '..', 'node_modules', 'bootstrap', 'dist'),
+  );
 
-  await app.listen(process.env.PORT ?? 3000);
+  const port = process.env.PORT ?? 3000;
+  await app.listen(port);
 }
 bootstrap();

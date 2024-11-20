@@ -1,0 +1,13 @@
+<h1>Arquivos</h1>
+
+<main class="container">
+  {{> file-tree}}
+</main>
+
+<pre>
+  {{#each megaFiles}}
+  
+  {{json this}}
+  
+  {{/each}}
+</pre>

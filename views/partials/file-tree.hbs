@@ -1,0 +1,35 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    {{#each pathLevels}}
+    {{#if @last}}
+    <li class="breadcrumb-item active" aria-current="page">{{this.name}}</li>
+    {{else}}
+    <li class="breadcrumb-item"><a href="/arquivos?caminho={{this.path}}">{{this.name}}</a></li>
+    {{/if}}
+    {{/each}}
+  </ol>
+</nav>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {{#each megaFiles}}
+  <div class="col">
+    <div class="card">
+      <div class="card-body">
+        {{#if isDirectory}}
+        <a href="/arquivos?caminho={{this.path}}">
+          <h5 class="card-title">
+            <i class="bi-folder-fill text-primary" aria-hidden="true"></i>
+            {{this.name}}
+          </h5>
+        </a>
+        {{else}}
+          <h5 class="card-title">
+            <i class="bi-file-earmark-fill text-secondary" aria-hidden="true"></i>
+            {{this.name}}
+          </h5>
+        {{/if}}
+        <p class="card-text">Tamanho: {{this.size}} bytes</p>
+      </div>
+    </div>
+  </div>
+  {{/each}}
+</div>
