@@ -1,0 +1,44 @@
+<section class="relative bg-cover bg-center h-screen" style="background-image: url('{{hero.url}}')">
+  <div class="absolute inset-0 bg-black opacity-50"></div>
+  <div class="relative z-10 flex justify-center items-center h-full text-center text-white">
+    <h1 class="text-5xl font-bold mb-2">Fotos</h1>
+    <p class="text-xl ml-2">
+      de Leandro Fabian Jr.
+    </p>
+  </div>
+</section>
+
+<section class="py-16 px-4">
+  <div class="container mx-auto text-center">
+    <p class="text-lg mb-8">
+      Às vezes faço umas fotos em viagens e passeios.<br />Instagram dá trabalho e é muito limitado, então coloco as
+      fotos
+      aqui.
+    </p>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-auto">
+      {{#each colunas}}
+      <div class="grid gap-4">
+        {{#each this}}
+        <div>
+          <img class="h-auto max-w-full rounded-lg" src="{{this.url}}" alt="{{this.url}}" />
+        </div>
+        {{/each}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+
+</section>
+
+<footer class="bg-gray-800 text-white py-8">
+  <div class="container mx-auto text-center">
+    <div class="mb-4">
+      <a href="https://instagram.com/leandrofabianjr" target="_blank"
+        class="mx-4 text-xl hover:text-yellow-500 transition duration-300">Instagram</a>
+      <a href="https://leandrofabianjr.com" target="_blank"
+        class="mx-4 text-xl hover:text-yellow-500 transition duration-300">Website</a>
+    </div>
+    <p>&copy; 2024 Leandro Fabian Jr. Todos os direitos reservados.</p>
+  </div>
+</footer>
