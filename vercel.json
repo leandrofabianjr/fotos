@@ -1,6 +1,12 @@
 {
   "version": 2,
   "buildCommand": "nest build && mv dist public",
+  "builds": [
+    {
+      "src": "dist/main.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/(.*)",
